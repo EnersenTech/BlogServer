@@ -10,9 +10,7 @@ const port = 4000
 const server = http.createServer(app)
 
 app.get('/', (req,res) => {
-	return res.json({
-		msg: "Hello Backend"
-	})
+	res.send("Server")
 })
 
 server.listen(port, () => {
