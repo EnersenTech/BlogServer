@@ -9,7 +9,7 @@ const port = 4000
 
 const server = http.createServer(app)
 
-app.get('/', (req,res) => {
+app.get('/a', (req,res) => {
 	res.send("Server")
 })
 
