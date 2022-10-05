@@ -13,6 +13,20 @@ const port = 4000
 
 const server = http.createServer(app)
 
+app.use('/uploads', express.static(path.join(__dirname + '/src/img/')))
+app.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Headers', 'accept, authorization, content-type, x-requested-with');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
+    res.setHeader('Access-Control-Allow-Origin', req.header('origin'));
+    next();
+});
+app.use('/', apiHandler)
+app.use(cors())
+
+
+
+
+
 io = new Server({
 	maxHttpBufferSize: 1e7,
 	pingTimeout: 60000,
@@ -25,19 +39,13 @@ io = new Server({
 	ws: true
   }).listen(server)
 
-
-app.use('/uploads', express.static(path.join(__dirname + '/src/img/')))
-app.use('/', apiHandler)
-app.set('io',io)
-app.use(cors())
-
-
-server.listen(port, () => {
-	console.log('server is running')
-})
+  app.set('io',io)
 
 
 io.sockets.on('connect', (socket) => {
 	console.log('[' + socket.id + '] connection accepted')}
 )	
 
+server.listen(port, () => {
+	console.log('server is running')
+})
