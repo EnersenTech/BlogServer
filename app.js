@@ -1,4 +1,5 @@
 const http = require('http')
+const https = require('https')
 const express = require('express')
 const {Server} = require('socket.io')
 const cors = require('cors')
@@ -9,9 +10,31 @@ const apiHandler = require('./apis/index')
 
 
 const port = 4000
+const isHttps = true
+let io, server, host
 
 
-const server = http.createServer(app)
+if (isHttps) {
+	const fs = require('fs')
+	const options = {
+	  key: fs.readFileSync(
+		path.join(__dirname, './ssl/private.key'),
+		'utf-8',
+	  ),
+	  cert: fs.readFileSync(
+		path.join(__dirname, './ssl/techenersen.pem'),
+		'utf-8',
+	  )
+	}
+	server = https.createServer(options, app)
+	host = 'https://' + 'techenersen.com' + ':' + port
+	console.log(host)
+  } else {
+	server = http.createServer(app)
+	host = 'http://' + 'techenersen.com' + ':' + port
+	console.log(host)
+  }
+
 
 app.use('/uploads', express.static(path.join(__dirname + '/src/img/')))
 app.use(function (req, res, next) {
