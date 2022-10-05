@@ -37,12 +37,12 @@ if (isHttps) {
 
 
 app.use('/uploads', express.static(path.join(__dirname + '/src/img/')))
-app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Headers', 'accept, authorization, content-type, x-requested-with');
-    res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
-    res.setHeader('Access-Control-Allow-Origin', req.header('origin'));
-    next();
-});
+// app.use(function (req, res, next) {
+//     res.setHeader('Access-Control-Allow-Headers', 'accept, authorization, content-type, x-requested-with');
+//     res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
+//     res.setHeader('Access-Control-Allow-Origin', req.header('origin'));
+//     next();
+// });
 app.use('/', apiHandler)
 app.use(cors())
 
