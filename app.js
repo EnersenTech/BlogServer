@@ -37,12 +37,6 @@ if (isHttps) {
 
 
 app.use('/uploads', express.static(path.join(__dirname + '/src/img/')))
-// app.use(function (req, res, next) {
-//     res.setHeader('Access-Control-Allow-Headers', 'accept, authorization, content-type, x-requested-with');
-//     res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
-//     res.setHeader('Access-Control-Allow-Origin', req.header('origin'));
-//     next();
-// });
 app.use('/', apiHandler)
 app.use(cors())
 
@@ -54,7 +48,7 @@ io = new Server({
 	maxHttpBufferSize: 1e7,
 	pingTimeout: 60000,
 	cors: {
-	  origin: ['http://techenersen.com', 'http://www.techenersen.com', 'http://localhost:3000', 'http://127.0.0.1:3000'],
+	  origin: ['https://techenersen.com', 'https://www.techenersen.com', 'https://localhost:3000', 'https://127.0.0.1:3000'],
 	  methods: ['GET', 'POST'],
 	  allowedHeaders: ['my-custom-header'],
 	  credentials: true,
