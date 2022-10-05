@@ -1,3 +1,4 @@
+require("dotenv").config();
 const http = require('http')
 const https = require('https')
 const express = require('express')
@@ -10,7 +11,7 @@ const apiHandler = require('./apis/index')
 
 
 const port = 4000
-const isHttps = process.env.isProduction
+const isHttps = process.env.isProduction == undefined ?  true : false
 let io, server, host
 
 
