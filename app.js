@@ -10,7 +10,7 @@ const apiHandler = require('./apis/index')
 
 
 const port = 4000
-const isHttps = true
+const isHttps = process.env.isProduction
 let io, server, host
 
 
@@ -36,19 +36,11 @@ if (isHttps) {
   }
 
 
-app.use('/uploads', express.static(path.join(__dirname + '/src/img/')))
-app.use('/', apiHandler)
-app.use(cors())
-
-
-
-
-
 io = new Server({
 	maxHttpBufferSize: 1e7,
 	pingTimeout: 60000,
 	cors: {
-	  origin: ['https://techenersen.com', 'https://www.techenersen.com', 'https://localhost:3000', 'https://127.0.0.1:3000'],
+	  origin: ['https://techenersen.com/', 'https://www.techenersen.com/', 'http://localhost:3000/', 'http://127.0.0.1:3000/'],
 	  methods: ['GET', 'POST'],
 	  allowedHeaders: ['my-custom-header'],
 	  credentials: true,
@@ -56,7 +48,12 @@ io = new Server({
 	ws: true
   }).listen(server)
 
-  app.set('io',io)
+
+app.use('/uploads', express.static(path.join(__dirname + '/src/img/')))
+app.use('/', apiHandler)
+app.use(cors())
+
+app.set('io',io)
 
 
 io.sockets.on('connect', (socket) => {
