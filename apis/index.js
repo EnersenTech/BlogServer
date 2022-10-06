@@ -12,6 +12,12 @@ router.get('/a', (req,res) => {
 	res.json({msg: 'Server from port 4000 /a path'})
 })
 
+router.get('/project/:contentId', (req,res,next)=>{
+	res.json({
+		
+	})
+})
+
 
 module.exports = router
 
