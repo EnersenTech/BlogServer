@@ -41,7 +41,7 @@ io = new Server({
 	maxHttpBufferSize: 1e7,
 	pingTimeout: 60000,
 	cors: {
-	  origin: ['https://techenersen.com/', 'https://www.techenersen.com/', 'http://localhost:3000/', 'http://127.0.0.1:3000/'],
+	  origin: ['https://techenersen.com', 'https://www.techenersen.com', 'http://localhost:3000', 'http://127.0.0.1:3000'],
 	  methods: ['GET', 'POST'],
 	  allowedHeaders: ['my-custom-header'],
 	  credentials: true,
@@ -49,10 +49,9 @@ io = new Server({
 	ws: true
   }).listen(server)
 
-
-app.use('/uploads', express.static(path.join(__dirname + '/src/img/')))
-app.use('/', apiHandler)
 app.use(cors())
+app.use('/uploads', express.static(path.join(__dirname + '/src/')))
+app.use('/', apiHandler)
 
 app.set('io',io)
 
