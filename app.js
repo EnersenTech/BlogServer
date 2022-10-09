@@ -11,6 +11,7 @@ const apiHandler = require('./apis/index')
 
 
 const port = 5000
+
 const isHttps = process.env.isProduction == undefined ?  true : false
 let io, server, host
 

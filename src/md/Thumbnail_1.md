@@ -1,17 +1,23 @@
-[인트로: TM4C123 LED Blinking](#introduction)
-- [재료 (Prerequisite) ](#prerequisite)
-- [개발 환경 설정(IDE)](#IDE)
 
-[회로도 (Schematic Diagram)](#SchematicDiagram)
-[소스 코드(Source Code)](#SourceCode)
+
+
+[인트로: TM4C123GXL LED Blinking](#introduction)
+- [재료 (Prerequisite) ](##prerequisite)
+- [개발 환경 설정(IDE)](##IDE)
+
+[메인: 과제 수행(Process)](#SourceCode)
+- [개요 (Overview)](##Process1)
 
 ## Introduction 
+TM4C123GXL 보드의 GPIO-A를 통해 LED Blinking을 구현하는 프로젝트입니다.
+
 
 ### 재료 (Prerequisite)
 본 프로젝트에서 사용될 보드 및 준비 재료입니다.
 보드를 제외한 다른 컴포넌트가 없더라도, IDE 디버깅 Simulator를 통해 코드의 흐름을 파악할 수 있습니다.
 ```
 	 - TM4C123GXL Launchpad by Texas Instrument (*)
+	 - Texas Instrument Data Sheet pdf (*)
 	 - 1ep Breadboard
 	 - 2ep Wire jumpers
 	 - 1ep LED component
@@ -22,6 +28,7 @@
 ### 개발 환경 설정 (IDE)
 본 프로젝트에서 사용할 IDE는 [IAR Workbench](https://www.iar.com/products/architectures/arm/iar-embedded-workbench-for-arm/)입니다.
 Visual Studio, Eclipse, Terminal 등 원하시는 개발 환경에서 구현해 주셔도 됩니다. 
+&nbsp;  
 다만, IAR를 선택한 이유로는 Disassembly Code를 통해 Register, Memory등을 시각화 하여 이해하기 편하기 때문입니다. 
 
 프로젝트 생성 과정은 다음과 같습니다.
@@ -42,5 +49,31 @@ Visual Studio, Eclipse, Terminal 등 원하시는 개발 환경에서 구현해 
  > tab > project > Options > General Options > Target > Device > TexasInstruments > TM4C > TexasInstruments TM4C1236H6PM
  > tab > project > Options > Debugger > TI Stellaris 
  
-## 회로도 (Schematic Diagram)
+## Process 
+
+### 개요 (Overview)
+GPIO (General Purpose Input Output)을 통해 시그널 제어를 시도합니다. 
+TM4C123GXL의 [Data Sheet](https://www.ti.com/lit/ds/spms376e/spms376e.pdf?ts=1665291750769&ref_url=https%253A%252F%252Fwww.ti.com%252Ftool%252FEK-TM4C123GXL%253FkeyMatch%253DTM4C123GXL%2BLAUNCHPAD)의 Pin Diagram을 보면 총 64개의 pin을 가지고 있습니다.
+&nbsp;  
+본 프로젝트에서 GPIO-A를 사용하기 때문에 다음의 핀을 이용합니다. 
+
+GPIO는 Microcontroller의 에너지 낭비를 막기 위해 default로 사용할 수 없습니다. 
+Clock-Gate를 열어 사용하기 위해서는 사용하고자 하는 GPIO Port의 Register를 활성화 해야합니다. 
+
+![figure description](http://localhost:5000/uploads/img/blog_source_1.png)
+&nbsp;  
+
+System Control Register Map의 RCGCGPIO를 찾아 Clock-Gate를 참조하면 다음과 같이 32-bits Register 맵을 볼 수 있습니다. 
+&nbsp;  
+![GPIO-Register-Map](http://localhost:5000/uploads/img/blog_source_2.png)
+
+
+
+
+R0 Register value가 1일 경우 A port를 활성화 할 수 있습니다. 
+&nbsp;  
+![GPIO-A-Register](http://127.0.0.1:5000/uploads/img/blog_source_3.png)
+
+
+
 
