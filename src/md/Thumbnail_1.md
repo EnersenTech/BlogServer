@@ -79,7 +79,7 @@ TM4C123GXL의 [Data Sheet](https://www.ti.com/lit/ds/spms376e/spms376e.pdf?ts=16
 &nbsp;  
 본 프로젝트에서 GPIO-A를 사용하기 때문에 [Figure.1 Pin Diagram]의 표기된 부분의 핀을 이용합니다. 
 
-![Pin Diagram](https://3.36.58.99:5000/uploads/img/blog_source_1.png) 
+![Pin Diagram](https://52.78.195.244:5000/uploads/img/blog_source_1.png) 
 &nbsp;  
 [Figure.1 Pin Diagram]
 &nbsp;  
@@ -95,14 +95,14 @@ Clock-Gate를 열어 사용하기 위해서는 사용하고자 하는 GPIO Port�
 ### 클락 게이트 활성화 (Clock Gate Open)
 System Control Register Map의 RCGCGPIO를 찾아 Clock-Gate를 참조하면 다음과 같이 32-bits Register 맵을 볼 수 있습니다. 
 &nbsp;  
-![GPIO-Register-Map](https://3.36.58.99:5000/uploads/img/blog_source_2.png)
+![GPIO-Register-Map](https://52.78.195.244:5000/uploads/img/blog_source_2.png)
 &nbsp;  
 [Figure.2 GPIO Register Map]
 
 
 R0 Register value가 1일 경우 A port를 활성화 할 수 있습니다. 
 &nbsp;  
-![GPIO-A-Register](https://3.36.58.99:5000/uploads/img/blog_source_3.png)
+![GPIO-A-Register](https://52.78.195.244:5000/uploads/img/blog_source_3.png)
 &nbsp;  
 [Figure.3 GPIO-A Register]
 &nbsp;  
@@ -142,7 +142,7 @@ Data Direction Register의 설정은 Output이 될 핀을 설정합니다. &nbsp
 PA2 핀 뿐만이 아니라, PA*에 데이터도 메모리에 할당할 수 있게 됩니다.   &nbsp;  
 해당 경우를 Isolated되었다고 하지 않고, 그 결과 메모리에 원치 않는 값을 맵핑할 수 있으므로 되도록이면 사용할 핀 데이터 라인과 메모리 라인을 Isolate하는 것이 중요합니다. 
 
-![Data-Line-Memory-Adress-Line](https://3.36.58.99:5000/uploads/img/blog_source_4.png) &nbsp;  
+![Data-Line-Memory-Adress-Line](https://52.78.195.244:5000/uploads/img/blog_source_4.png) &nbsp;  
 [Figure.4 Data Link Line & Data Memory Line]
  &nbsp;  
 
@@ -263,7 +263,7 @@ int main() {
 
 ## Demo
 *** 
-[Demo-Video](https://3.36.58.99:5000/uploads/video/blog_source_5-1.mov)
+[Demo-Video](https://52.78.195.244:5000/uploads/video/blog_source_5-1.mov)
 
 ## Reference
 *** 
