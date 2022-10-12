@@ -27,5 +27,5 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm i
-    - run: pm2 restart backend
-    - run: pm2 save
+    # - run: pm2 restart backend
+    # - run: pm2 save
