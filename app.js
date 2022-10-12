@@ -21,6 +21,7 @@ aws.config.update({
 
 const BUCKET=process.env.BUCKET
 console.log(BUCKET)
+console.log(aws.config.region)
 const s3 = new aws.S3()
 
 const upload = multer({
