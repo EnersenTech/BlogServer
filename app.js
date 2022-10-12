@@ -121,7 +121,7 @@ app.post('/upload', upload.single('file'),(req,res)=>{
 })
 
 app.post('/b', (req,res)=>{
-	const {test} = req.body
+	console.log(BUCKET)
 	res.send('test success')
 })
 
