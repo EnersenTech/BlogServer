@@ -41,5 +41,5 @@ jobs:
             echo "REGION=${{ secrets.REGION }}" >> .env
             echo "BUCKET=${{ secrets.BUCKET }}" >> .env
     - run: npm i
-    - run: pm2 restart backend
+    - run: pm2 restart backend --update-env
     - run: pm2 save
