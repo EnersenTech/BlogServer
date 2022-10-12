@@ -27,7 +27,12 @@ aws.config.update({
 const BUCKET=process.env.BUCKET
 console.log(BUCKET)
 console.log(aws.config.region)
-const s3 = new aws.S3()
+const s3 = new aws.S3({
+	apiVersion: 'latest',
+	screteAccessKey: process.env.ACCESS_SECRET,
+	accessKeyId: process.env.ACCESS_KEY,
+	region: process.env.REGION
+})
 
 const upload = multer({
 	storage:multerS3({
