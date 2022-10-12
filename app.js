@@ -9,9 +9,12 @@ const fs = require('fs')
 const aws = require('aws-sdk')
 const multer = require('multer')
 const multerS3=require('multer-s3')
+const bodyParser = require('body-parser')
 const Pool = require('pg').Pool
 const app = express()
 // const apiHandler = require('./apis/index')
+var jsonParser = bodyParser.json()
+var urlencodedParser = bodyParser.urlencoded({extended: false})
 
 aws.config.update({
 	apiVersion: 'latest',
@@ -40,7 +43,7 @@ const pool = new Pool({
 	user: 'postgres',
 	password: 'kwh47951712!',
 	database: 'blog',
-	host: "52.78.35.234",
+	host: '52.78.35.234',
 	port: 5712
 })
 
@@ -86,6 +89,7 @@ io = new Server({
 
 app.use(cors())
 app.use('/uploads', express.static(path.join(__dirname + '/src/')))
+app.use('/', jsonParser)
 // app.use('/', apiHandler)
 
 app.set('io',io)
