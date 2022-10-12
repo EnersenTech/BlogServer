@@ -43,6 +43,6 @@ jobs:
             echo "BUCKET=${{ secrets.BUCKET }}" >> .env
             cat .env | head -n 1
     - run: npm i
-    - run: node app.js
+   # - run: node app.js
    # - run: pm2 restart backend --update-env
    # - run: pm2 save
