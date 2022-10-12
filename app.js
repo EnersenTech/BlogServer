@@ -114,7 +114,7 @@ app.delete('/delete/:filename', async(req,res)=>{
 })
 
 //============================== POST ==============================
-app.post('upload', upload.single('file'),(req,res)=>{
+app.post('/upload', upload.single('file'),(req,res)=>{
 	console.log(req.file)
 	res.send('Successfully uploaded ' + req.file.location + ' location!')
 })
