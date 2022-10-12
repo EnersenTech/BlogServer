@@ -35,6 +35,7 @@ const s3 = new aws.S3({
 })
 
 console.log(s3.config)
+console.log(s3.config.credentials)
 const upload = multer({
 	storage:multerS3({
 		bucket:BUCKET,
