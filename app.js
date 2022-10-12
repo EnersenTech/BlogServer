@@ -109,16 +109,20 @@ app.get('/download/:filename', async(req,res)=>{
 	res.send(x.Body)
 })
 
-app.delete('/delete/:filename', async(req,res)=>{
-	const filename = req.params.filename
-	await s3.deleteObject({Bucket: BUCKET, Key: filename}).promise()
-	res.send('File Deleted Sucessfully!')
+app.get('/a', (req,res)=>{
+	res.send('path a')
 })
+
 
 //============================== POST ==============================
 app.post('/upload', upload.single('file'),(req,res)=>{
 	console.log(req.file)
 	res.send('Successfully uploaded ' + req.file.location + ' location!')
+})
+
+app.post('/b', (req,res)=>{
+	const {test} = req.body
+	res.send('test success')
 })
 
 
@@ -140,6 +144,11 @@ app.post('/post', async(req,res)=>{
 //============================== PUT ==============================
 
 //============================== DELETE ==============================
+app.delete('/delete/:filename', async(req,res)=>{
+	const filename = req.params.filename
+	await s3.deleteObject({Bucket: BUCKET, Key: filename}).promise()
+	res.send('File Deleted Sucessfully!')
+})
 
 
 io.sockets.on('connect', (socket) => {
