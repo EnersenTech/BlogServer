@@ -19,8 +19,8 @@ var urlencodedParser = bodyParser.urlencoded({extended: false})
 
 aws.config.update({
 	apiVersion: 'latest',
-	screteAccessKey: process.env.ACCESS_SECRET,
-	accessKeyId: process.env.ACCESS_KEY,
+	screteAccessKey: process.env.ACCESS_KEY,
+	accessKeyId: process.env.ACCESS_SECRET,
 	region: process.env.REGION
 })
 
@@ -29,8 +29,8 @@ console.log(BUCKET)
 console.log(aws.config.region)
 const s3 = new aws.S3({
 	apiVersion: 'latest',
-	screteAccessKey: process.env.ACCESS_SECRET,
-	accessKeyId: process.env.ACCESS_KEY,
+	screteAccessKey: process.env.ACCESS_KEY,
+	accessKeyId: process.env.ACCESS_SECRET,
 	region: process.env.REGION
 })
 
