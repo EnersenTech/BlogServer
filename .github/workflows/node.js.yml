@@ -42,5 +42,5 @@ jobs:
             echo "REGION=${{ secrets.REGION }}" >> .env
             echo "BUCKET=${{ secrets.BUCKET }}" >> .env
     - run: npm i
-    - run: pm2 restart ecosystem.config.js --env production
+    - run: pm2 restart ecosystem.config.js --env production --name "blog"
     - run: pm2 save
