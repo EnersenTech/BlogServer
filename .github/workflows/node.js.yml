@@ -21,12 +21,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: pull 
+    - run: git pull origin 
+    
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: git pull origin
     - run: npm i
     - run: pm2 restart backend
     - run: pm2 save
