@@ -122,6 +122,9 @@ app.post('/upload', upload.single('file'),(req,res)=>{
 
 app.post('/b', (req,res)=>{
 	console.log(BUCKET)
+	console.log(process.env.ACCESS_SECRET)
+	console.log(process.env.ACCESS_KEY)
+	console.log(process.env.REGION)
 	res.send('test success')
 })
 
