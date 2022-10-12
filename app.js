@@ -46,8 +46,7 @@ const pool = new Pool({
 
 const port = 5000
 
-// const isHttps = process.env.IS_PRODUCTION
-const isHttps = false
+const isHttps = process.env.IS_PRODUCTION
 let io, server, host
 
 
