@@ -9,7 +9,8 @@ const fs = require('fs')
 const aws = require('aws-sdk')
 const multer = require('multer')
 const multerS3=require('multer-s3')
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const { isBoolean } = require("util");
 const Pool = require('pg').Pool
 const app = express()
 // const apiHandler = require('./apis/index')
@@ -49,7 +50,7 @@ const pool = new Pool({
 
 const port = 5000
 
-const isHttps = process.env.IS_PRODUCTION
+const isHttps = process.env.IS_PRODUCTION == 'false' ? false : true
 let io, server, host
 
 
