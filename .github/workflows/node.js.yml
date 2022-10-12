@@ -26,7 +26,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: git pull origin master
+    - run: git pull origin
     - run: npm i
     - run: pm2 restart backend
     - run: pm2 save
