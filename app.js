@@ -34,6 +34,7 @@ const s3 = new aws.S3({
 	region: process.env.REGION
 })
 
+console.log(s3.config)
 const upload = multer({
 	storage:multerS3({
 		bucket:BUCKET,
