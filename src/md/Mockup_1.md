@@ -10,4 +10,5 @@
 > 
 
 ## Selecting and Donwloading the Required Developement Platforms for Arduino series boards
+mockup
 Getting started with any microconntroller will need a programming IDE like we have Arduino IDE for Arduino boards. 
