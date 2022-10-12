@@ -14,6 +14,7 @@ const app = express()
 // const apiHandler = require('./apis/index')
 
 aws.config.update({
+	apiVersion: 'latest',
 	screteAccessKey: process.env.ACCESS_SECRET,
 	accessKeyId: process.env.ACCESS_KEY,
 	region: process.env.REGION
