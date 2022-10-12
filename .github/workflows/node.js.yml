@@ -35,11 +35,13 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: | 
+            touch .env
             echo "IS_PRODUCTION=${{ secrets.IS_PRODUCTION }}" >> .env
             echo "ACCESS_KEY=${{ secrets.ACCESS_KEY }}" >> .env
             echo "ACCESS_SECRET=${{ secrets.ACCESS_SECRET }}" >> .env
             echo "REGION=${{ secrets.REGION }}" >> .env
             echo "BUCKET=${{ secrets.BUCKET }}" >> .env
+            cat .env | head -n 1
     - run: npm i
     - run: pm2 restart backend --update-env
     - run: pm2 save
