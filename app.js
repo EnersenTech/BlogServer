@@ -17,9 +17,13 @@ const app = express()
 var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({extended: false})
 
+aws.config.region = process.env.REGION
+aws.config.accessKeyId = process.env.ACCESS_KEY
+aws.config.secretAccessKey = process.env.ACCESS_SECRET
+
 aws.config.update({
 	apiVersion: 'latest',
-	screteAccessKey: process.env.ACCESS_KEY,
+	secretAccessKey: process.env.ACCESS_KEY,
 	accessKeyId: process.env.ACCESS_SECRET,
 	region: process.env.REGION
 })
@@ -29,7 +33,7 @@ console.log(BUCKET)
 console.log(aws.config.region)
 const s3 = new aws.S3({
 	apiVersion: 'latest',
-	screteAccessKey: process.env.ACCESS_KEY,
+	secretAccessKey: process.env.ACCESS_KEY,
 	accessKeyId: process.env.ACCESS_SECRET,
 	region: process.env.REGION
 })
