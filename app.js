@@ -17,32 +17,9 @@ const app = express()
 var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({extended: false})
 
-// aws.config.region = process.env.REGION
-// aws.config.accessKeyId = process.env.ACCESS_KEY
-// aws.config.secretAccessKey = process.env.ACCESS_SECRET
-
-// console.log(aws.config)
-
-// aws.config.update({
-// 	apiVersion: 'latest',
-// 	secretAccessKey: process.env.ACCESS_KEY,
-// 	accessKeyId: process.env.ACCESS_SECRET,
-// 	region: process.env.REGION
-// })
-
 const BUCKET=process.env.BUCKET
-console.log(BUCKET)
-console.log(aws.config.region)
 const s3 = new aws.S3()
 
-// {
-// 	apiVersion: 'latest',
-// 	secretAccessKey: process.env.ACCESS_KEY,
-// 	accessKeyId: process.env.ACCESS_SECRET,
-// 	region: process.env.REGION
-// }
-console.log(s3.config)
-console.log(s3.config.credentials)
 const upload = multer({
 	storage:multerS3({
 		bucket:BUCKET,
@@ -60,6 +37,13 @@ const pool = new Pool({
 	database: 'blog',
 	host: '52.78.35.234',
 	port: 5712
+})
+
+pool.connect(err => {
+	if(err) console.error(err)
+	else{
+		console.log('DB connected')
+	}
 })
 
 const port = 5000
@@ -129,23 +113,10 @@ app.get('/download/:filename', async(req,res)=>{
 	res.send(x.Body)
 })
 
-app.get('/a', (req,res)=>{
-	res.send('path a')
-})
-
-
 //============================== POST ==============================
 app.post('/upload', upload.single('file'),(req,res)=>{
 	console.log(req.file)
 	res.send('Successfully uploaded ' + req.file.location + ' location!')
-})
-
-app.post('/b', (req,res)=>{
-	console.log(BUCKET)
-	console.log(process.env.ACCESS_SECRET)
-	console.log(process.env.ACCESS_KEY)
-	console.log(process.env.REGION)
-	res.send('test success')
 })
 
 
