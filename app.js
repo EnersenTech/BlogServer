@@ -21,6 +21,8 @@ aws.config.region = process.env.REGION
 aws.config.accessKeyId = process.env.ACCESS_KEY
 aws.config.secretAccessKey = process.env.ACCESS_SECRET
 
+console.log(aws.config)
+
 aws.config.update({
 	apiVersion: 'latest',
 	secretAccessKey: process.env.ACCESS_KEY,
