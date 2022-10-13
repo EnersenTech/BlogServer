@@ -17,29 +17,30 @@ const app = express()
 var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({extended: false})
 
-aws.config.region = process.env.REGION
-aws.config.accessKeyId = process.env.ACCESS_KEY
-aws.config.secretAccessKey = process.env.ACCESS_SECRET
+// aws.config.region = process.env.REGION
+// aws.config.accessKeyId = process.env.ACCESS_KEY
+// aws.config.secretAccessKey = process.env.ACCESS_SECRET
 
-console.log(aws.config)
+// console.log(aws.config)
 
-aws.config.update({
-	apiVersion: 'latest',
-	secretAccessKey: process.env.ACCESS_KEY,
-	accessKeyId: process.env.ACCESS_SECRET,
-	region: process.env.REGION
-})
+// aws.config.update({
+// 	apiVersion: 'latest',
+// 	secretAccessKey: process.env.ACCESS_KEY,
+// 	accessKeyId: process.env.ACCESS_SECRET,
+// 	region: process.env.REGION
+// })
 
 const BUCKET=process.env.BUCKET
 console.log(BUCKET)
 console.log(aws.config.region)
-const s3 = new aws.S3({
-	apiVersion: 'latest',
-	secretAccessKey: process.env.ACCESS_KEY,
-	accessKeyId: process.env.ACCESS_SECRET,
-	region: process.env.REGION
-})
+const s3 = new aws.S3()
 
+// {
+// 	apiVersion: 'latest',
+// 	secretAccessKey: process.env.ACCESS_KEY,
+// 	accessKeyId: process.env.ACCESS_SECRET,
+// 	region: process.env.REGION
+// }
 console.log(s3.config)
 console.log(s3.config.credentials)
 const upload = multer({
