@@ -36,7 +36,7 @@ const pool = new Pool({
 	password: 'kwh47951712!',
 	database: 'blog',
 	host: '52.78.35.234',
-	port: 5712
+	port: 5432
 })
 
 pool.connect(err => {
