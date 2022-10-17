@@ -44,6 +44,7 @@ jobs:
             echo "DB_USERNAME=${{ secrets.DB_USERNAME }}" >> .env
             echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
             echo "DB_DATABASE=${{ secrets.DB_DATABASE }}" >> .env
+            echo "DB_HOST=${{ secrets.DB_HOST }}" >> .env
             echo "DB_DIALECT=${{ secrets.DB_DIALECT }}" >> .env
             echo "DB_PORT=${{ secrets.DB_PORT }}" >> .env
             echo "DB_OPERATORS_ALIASES=${{ secrets.DB_OPERATORS_ALIASES }}" >> .env
