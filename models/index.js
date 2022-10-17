@@ -6,6 +6,7 @@ console.log(typeof env)
 console.log('------------------')
 const config = require('./config')[env]
 console.log(config.database)
+console.log(config.host)
 
 // POST
 const POST = require('./post')
