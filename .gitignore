@@ -128,3 +128,13 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+
+# awscli-bundle
+awscli-bundle/
+awscli-bundle
+
+database
+
+database/
+
