@@ -41,6 +41,14 @@ jobs:
             echo "ACCESS_SECRET=${{ secrets.ACCESS_SECRET }}" >> .env
             echo "REGION=${{ secrets.REGION }}" >> .env
             echo "BUCKET=${{ secrets.BUCKET }}" >> .env
+            echo "DB_USERNAME=${{ secrets.DB_USERNAME }}" >> .env
+            echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
+            echo "DB_DATABASE=${{ secrets.DB_DATABASE }}" >> .env
+            echo "DB_DIALECT=${{ secrets.DB_DIALECT }}" >> .env
+            echo "DB_PORT=${{ secrets.DB_PORT }}" >> .env
+            echo "DB_OPERATORS_ALIASES=${{ secrets.DB_OPERATORS_ALIASES }}" >> .env
+
+
     - run: npm i
     - run: pm2 restart ecosystem.config.js --env production --name "blog"
     - run: pm2 save
